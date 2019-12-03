@@ -5,11 +5,13 @@ import ROLES from "../constants/role";
 
 
 function create(req, res, next) {
+  
   const restaurant = new Restaurant({
     name: req.body.name,
-    user: req.user._id,
   });
 
+  restaurant.user = req.user._id;
+  
   restaurant
     .save()
     .then(newRestaurant => {
